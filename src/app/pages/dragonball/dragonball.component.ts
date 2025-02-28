@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+
+interface Character {
+  id: number;
+  name: string;
+  power: number;
+}
 
 @Component({
   selector: 'app-dragonball',
@@ -6,4 +12,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './dragonball.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DragonballComponent {}
+export class DragonballComponent {
+  characters = signal<Character[]>([
+    { id: 1, name: 'Goku', power: 9000 },
+    { id: 2, name: 'Vegeta', power: 8000 },
+    { id: 3, name: 'Gohan', power: 7000 },
+  ]);
+}
