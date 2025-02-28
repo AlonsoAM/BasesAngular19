@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   input,
+  output,
   signal,
 } from '@angular/core';
 import { Character } from '../../../interfaces/character.interface';
@@ -16,10 +17,7 @@ export class CharacterAddComponent {
   name = signal<string>('');
   power = signal<number>(0);
 
-  characters = signal<Character[]>([
-    { id: 1, name: 'Goku', power: 9001 },
-    { id: 2, name: 'Vegeta', power: 8000 },
-  ]);
+  newCharacter = output<Character>();
 
   addCharacter() {
     if (!this.name() || this.power() === 0 || this.power() < 0) {
@@ -27,13 +25,12 @@ export class CharacterAddComponent {
     }
 
     const newCharacter: Character = {
-      id: this.characters().length + 1,
+      id: Math.floor(Math.random() * 1000),
       name: this.name(),
       power: this.power(),
     };
 
-    // this.characters.update((chars) => [...chars, newCharacter]);
-    console.log({ newCharacter });
+    this.newCharacter.emit(newCharacter);
 
     this.resetFields();
   }
