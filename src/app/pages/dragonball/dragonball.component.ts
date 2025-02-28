@@ -21,12 +21,7 @@ export class DragonballComponent {
   name = signal<string>('');
   power = signal<number>(0);
 
-  characters = signal<Character[]>([
-    { id: 1, name: 'Goku', power: 9001 },
-    { id: 2, name: 'Vegeta', power: 8000 },
-    { id: 3, name: 'Gohan', power: 7000 },
-    { id: 4, name: 'Yamcha', power: 500 },
-  ]);
+  characters = signal<Character[]>([{ id: 1, name: 'Goku', power: 9001 }]);
 
   addCharacter() {
     if (!this.name() || this.power() === 0 || this.power() < 0) {
