@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
@@ -8,16 +8,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 })
 export class CounterComponent {
   counter = 10;
+  cunterSignal = signal(10);
 
   increaseBy(value: number): void {
     this.counter += value;
+    this.cunterSignal.update((prev) => prev + value);
   }
 
   decreaseBy(value: number): void {
     this.counter -= value;
+    this.cunterSignal.update((prev) => prev - value);
   }
 
   reset(): void {
     this.counter = 10;
+
+    this.cunterSignal.set(0);
   }
 }
