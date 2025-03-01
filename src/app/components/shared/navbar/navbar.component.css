@@ -1,0 +1,17 @@
+nav{
+  display: flex;
+  justify-content: space-around;
+  background-color: #212121;
+  color: white;
+  padding: 10px;
+}
+
+nav a{
+  color: white;
+  text-decoration: none;
+}
+
+nav a.router-link-active{
+  color: #FFC107;
+  font-weight: bold;
+}
