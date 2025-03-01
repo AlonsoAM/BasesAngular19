@@ -11,7 +11,7 @@ export const appConfig: ApplicationConfig = {
     // HashStrategy
     {
       provide: LocationStrategy,
-      useValue: HashLocationStrategy,
+      useClass: HashLocationStrategy,
     },
   ],
 };
